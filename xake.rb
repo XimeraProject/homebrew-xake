@@ -22,10 +22,14 @@ class Xake < Formula
   def install
     ENV["GOPATH"] = buildpath
     ENV["GOBIN"] = bin
-
-    # Install Go dependences
-    system "go", "get", "."
-    # system "go", "build", "-o", "xake" 
+    ENV["PKG_CONFIG_PATH"]=buildpath + "/src/github.com/libgit2/git2go/vendor/libgit2/build"
+    ENV["CGO_CFLAGS"]="-I" + buildpath + "/src/github.com/libgit2/git2go/vendor/libgit2/include"
+    system "go", "get", "-d", "github.com/libgit2/git2go"
+    system "cd", buildpath + "/src/github.com/libgit2/git2go"
+    system "git","submodule","update","--int"
+    system "make","install-static"
+    system "cd", buildpath
+    system "go", "get", "-tags","static","."
     mv bin/"xake-628c13c44abc8343b913d2291cd0c356bd93f144", bin/"xake"
   end
 
