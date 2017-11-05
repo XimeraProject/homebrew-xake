@@ -8,6 +8,7 @@ class Xake < Formula
   head "https://github.com/XimeraProject/xake.git"
 
   depends_on "go" => :build
+  depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "libgit2" => :run
   depends_on "gnupg" => :run
@@ -25,12 +26,12 @@ class Xake < Formula
     ENV["PKG_CONFIG_PATH"]=buildpath + "/src/github.com/libgit2/git2go/vendor/libgit2/build"
     ENV["CGO_CFLAGS"]="-I" + buildpath + "/src/github.com/libgit2/git2go/vendor/libgit2/include"
     system "go", "get", "-d", "github.com/libgit2/git2go"
-    system "cd", buildpath + "/src/github.com/libgit2/git2go"
-    system "git","submodule","update","--int"
+    Dir.chdir(ENV["GOPATH"]+"/src/github.com/libgit2/git2go")
+    system "git","submodule","update","--init"
     system "make","install-static"
-    system "cd", buildpath
+    Dir.chdir(ENV["GOPATH"])
     system "go", "get", "-tags","static","."
-    mv bin/"xake-628c13c44abc8343b913d2291cd0c356bd93f144", bin/"xake"
+    mv bin/"xake-208768de7af0c019c1c6fc0a2a44cdf76a105599", bin/"xake"
   end
 
   test do
