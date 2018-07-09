@@ -1,9 +1,11 @@
+
+
 class Xake < Formula
   desc "Build interactive math activities for Ximera"
   homepage "https://ximera.osu.edu/"
-  url "https://github.com/XimeraProject/xake/archive/208768de7af0c019c1c6fc0a2a44cdf76a105599.tar.gz"
-  version "0.8.28"
-  sha256 "f35a78abc69874561a0f70f1489c283599cebd82b39b595175f7e65c16badaea"
+  url "https://github.com/XimeraProject/xake/archive/v0.9.2.tar.gz"
+  version "0.9.2"
+  sha256 "7718452c43d7cf72388284df017bdb71f95e58db8452014b25f79ff47eec009d"
 
   head "https://github.com/XimeraProject/xake.git"
 
@@ -31,7 +33,7 @@ class Xake < Formula
     system "make","install-static"
     Dir.chdir(ENV["GOPATH"])
     system "go", "get", "-tags","static","."
-    mv bin/"xake-208768de7af0c019c1c6fc0a2a44cdf76a105599", bin/"xake"
+    mv bin/"xake-v0.9.2", bin/"xake"
   end
 
   test do
