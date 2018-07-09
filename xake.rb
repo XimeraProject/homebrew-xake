@@ -31,7 +31,8 @@ class Xake < Formula
     system "make","install-static"
     Dir.chdir(ENV["GOPATH"])
     system "go", "get", "-tags","static","."
-    mv bin/"xake-1182864e966ec5285221deed0581b2b87ea752f7", bin/"xake"
+    system "ls bin"
+    #mv bin/"xake-1182864e966ec5285221deed0581b2b87ea752f7", bin/"xake"
   end
 
   test do
