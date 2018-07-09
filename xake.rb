@@ -1,5 +1,3 @@
-
-
 class Xake < Formula
   desc "Build interactive math activities for Ximera"
   homepage "https://ximera.osu.edu/"
@@ -12,12 +10,12 @@ class Xake < Formula
   depends_on "go" => :build
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
-  depends_on "libgit2" => :run
-  depends_on "gnupg" => :run
-  depends_on "mupdf" => :run
+  depends_on "libgit2"
+  depends_on "gnupg"
+  depends_on "mupdf"
   
   # Git is a dependency because xake shells out a "git push" to publish content to the Ximera server.
-  depends_on "git" => :run
+  depends_on "git"
   
   # also depends on tex
   # also depends on ximeraLatex
