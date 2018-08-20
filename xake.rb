@@ -1,7 +1,7 @@
 class Xake < Formula
   desc "Build interactive math activities for Ximera"
   homepage "https://ximera.osu.edu/"
-  url "https://github.com/XimeraProject/xake/archive/v0.9.2.tar.gz"
+  url "https://github.com/XimeraProject/xake/archive/v0.9.3.tar.gz"
   version "0.9.3"
   sha256 "611f240103c8ac8dbac36fd497566f8040f247e312f3ae0fd34848ff6da81389"
 
